@@ -1,4 +1,4 @@
-package com.example.hensh.buttonmatrix;
+package com.example.android.test;
 
 
 import android.os.Bundle;
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private LinearLayout mainLayout;
 
-    int rows = 3;
+  final  int rows = 3;
     LinearLayout[] linearLayoutRows = new LinearLayout[rows];
 
     @Override
@@ -42,18 +42,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        int textViewCount = 9;
-        final TextView[] textViewArray = new TextView[textViewCount];
+       final int textViewCount = rows*rows;
+        final TextView[] textView = new TextView[textViewCount];
         for (int i = 0; i < textViewCount; i++) {
-            textViewArray[i] = new TextView(this);
+            textView[i] = new TextView(this);
         }
 
-        for (int j = 0; j < 9; j += 3) {
-            for (int i = 0; i < 3; i++) {
-                textViewArray[j + i].setWidth(300);
-                textViewArray[j + i].setHeight(300);
-                textViewArray[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolor, getTheme()));
-                linearLayoutRows[j / 3].addView(textViewArray[j + i]);
+        for (int j = 0; j < textViewCount; j += rows) {
+            for (int i = 0; i < rows; i++) {
+                textView[j + i].setWidth(900/rows);
+                textView[j + i].setHeight(900/rows);
+                textView[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolor, getTheme()));
+                linearLayoutRows[j / rows].addView(textView[j + i]);
             }
         }
 
@@ -66,18 +66,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                for (int j = 0; j < 9; j += 3) {
-                    for (int i = 0; i < 3; i++) {
-                        textViewArray[j + i].setWidth(300);
-                        textViewArray[j + i].setHeight(300);
-                        textViewArray[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolor, getTheme()));
-                        //for the first diagonal
-                        if(j/3 == i) {
-                            textViewArray[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolormark, getTheme()));
+                for (int j = 0; j < textViewCount; j += rows) {
+                    for (int i = 0; i < rows; i++) {
+                        textView[j + i].setWidth(900/rows);
+                        textView[j + i].setHeight(900/rows);
+                        textView[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolor, getTheme()));
+
+                        if(j/rows == i) {
+                            textView[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolormark, getTheme()));
                         }
 
-                        if(j/3 + i == 2) {
-                            textViewArray[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolormark, getTheme()));
+                        if(j/rows + i == (rows-1)) {
+                            textView[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolormark, getTheme()));
                         }
                     }
                 }
@@ -91,14 +91,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                for (int j = 0; j < 9; j += 3) {
-                    for (int i = 0; i < 3; i++) {
-                        textViewArray[j + i].setWidth(300);
-                        textViewArray[j + i].setHeight(300);
-                        textViewArray[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolor, getTheme()));
+                for (int j = 0; j < textViewCount; j += rows) {
+                    for (int i = 0; i < rows; i++) {
+                        textView[j + i].setWidth(900/rows);
+                        textView[j + i].setHeight(900/rows);
+                        textView[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolor, getTheme()));
 
-                        if(j == 0 || j/3 == 2 || i == 0 || i == 2) {
-                            textViewArray[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolormark, getTheme()));
+                        if(j == 0 || j/rows == (rows-1) || i == 0 || i == (rows-1)) {
+                            textView[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolormark, getTheme()));
                         }
                     }
                 }
@@ -113,18 +113,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                for (int j = 0; j < 9; j += 3) {
-                    for (int i = 0; i < 3; i++) {
-                        textViewArray[j + i].setWidth(300);
-                        textViewArray[j + i].setHeight(300);
-                        textViewArray[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolor, getTheme()));
+                for (int j = 0; j < textViewCount; j += rows) {
+                    for (int i = 0; i < rows; i++) {
+                        textView[j + i].setWidth(900/rows);
+                        textView[j + i].setHeight(900/rows);
+                        textView[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolor, getTheme()));
 
-                        if(j/3 == i) {
-                            textViewArray[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolormark, getTheme()));
+                        if(j/rows == i) {
+                            textView[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolormark, getTheme()));
                         }
 
-                        if(i > j/3){
-                            textViewArray[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolormark, getTheme()));
+                        if(i > j/rows){
+                            textView[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolormark, getTheme()));
                         }
                     }
                 }
@@ -138,18 +138,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                for (int j = 0; j < 9; j += 3) {
-                    for (int i = 0; i < 3; i++) {
-                        textViewArray[j + i].setWidth(300);
-                        textViewArray[j + i].setHeight(300);
-                        textViewArray[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolor, getTheme()));
+                for (int j = 0; j <textViewCount; j += rows) {
+                    for (int i = 0; i < rows; i++) {
+                        textView[j + i].setWidth(900/rows);
+                        textView[j + i].setHeight(900/rows);
+                        textView[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolor, getTheme()));
 
-                        if(j/3 == i) {
-                            textViewArray[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolormark, getTheme()));
+                        if(j/rows == i) {
+                            textView[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolormark, getTheme()));
                         }
 
-                        if(j/3 > i){
-                            textViewArray[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolormark, getTheme()));
+                        if(j/rows > i){
+                            textView[j + i].setBackground(getResources().getDrawable(R.drawable.cellcolormark, getTheme()));
                         }
                     }
                 }
